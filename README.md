@@ -10,6 +10,7 @@
 - **Feedback Visualization**: After voting, users see the current vote tallies, showing community consensus.
 - **Prevention of Duplicate Votes**: Tracks user votes using their IP address to prevent multiple votes on the same post by the same user.
 - **Admin Insights**: In the WordPress admin area, see how many votes each post has received directly in the post edit screen.
+- **Delete Data on Uninstallation**: When plugin is deleted or uninstalled from WordPress, all the plugin data from the database will be deleted.
 
 ## Installation
 
