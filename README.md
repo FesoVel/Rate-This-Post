@@ -13,9 +13,12 @@
 
 ## Installation
 
-1. Download the plugin files and upload the entire `rate-this-post` folder to the `/wp-content/plugins/` directory.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Once activated, the voting buttons will automatically appear on all posts.
+1. Find the plugin folder `wp-app/wp-content/plugins/rate-this-post/`.
+2. Upload the entire `rate-this-post` folder to the `/wp-content/plugins/` directory of your WordPress installation.
+3. Activate the plugin through the 'Plugins' menu in WordPress.
+4. Once activated, the voting buttons will automatically appear on all posts.
+
+* If you want to use this repo as your development environment, please refer to [WPDC - WordPress Docker Compose](https://github.com/CryptoManiaks/senior-wp-assestment) documentation.
 
 ## Usage
 
