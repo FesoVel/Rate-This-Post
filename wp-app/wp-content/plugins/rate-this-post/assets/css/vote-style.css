@@ -1,0 +1,56 @@
+#rtp-vote-buttons{
+	border: 2px #AB69FF dashed;
+	border-radius: 5px;
+	padding: 1rem;
+	display: flex;
+    align-items: center;
+}
+#rtp-vote-buttons .rtp-btn-wrap{
+	display: flex;
+}
+#rtp-vote-buttons .rtp-vote-btn{
+	background: white;
+    border: 1px #E5E5E5 solid;
+    border-radius: 5px;
+    padding: .5rem;
+    cursor: pointer;
+    margin-right: 1.33rem;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all .13s ease-in;
+}
+#rtp-vote-buttons .rtp-vote-btn.rtp-active{
+	border-color: #3A7BFF;
+	border-width: 2px;
+	margin: -1px calc(1.33rem - 1px) -1px -1px;
+}
+#rtp-vote-buttons .rtp-vote-btn:hover{
+	border-color: #8F8F8F;
+	border-width: 2px;
+	margin: -1px calc(1.33rem - 1px) -1px -1px;
+}
+#rtp-vote-buttons .rtp-vote-btn.rtp-active svg{
+	fill: #3A7BFF;
+}
+#rtp-vote-buttons .rtp-vote-btn:hover svg{
+	fill: #666666;	
+}
+#rtp-vote-buttons .rtp-vote-btn svg{
+	margin-right: .33rem;
+}
+#rtp-vote-buttons .rtp-title{
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-right: 1.33rem;
+}
+@media screen and (max-width: 480px){
+	#rtp-vote-buttons{
+		flex-direction: column;
+	}
+	#rtp-vote-buttons .rtp-btn-wrap{
+    	display: flex;
+    	justify-content: center;
+	}
+}
