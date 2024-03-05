@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class RTP_RateThisPost {
 	protected static $instance = null;
 
+	// Constructor
 	private function __construct() {
 		// Activation and deactivation hooks
 		register_activation_hook( RTP_PLUGIN_FILE, array( $this, 'activate' ) );
@@ -15,6 +16,7 @@ class RTP_RateThisPost {
 		$this->init();
 	}
 
+	// Get instance of class
 	public static function get_instance() {
 		if ( null === self::$instance ) {
 			self::$instance = new self();
@@ -22,6 +24,7 @@ class RTP_RateThisPost {
 		return self::$instance;
 	}
 
+	// Plugin init
 	private function init() {
 		add_action( 'wp_ajax_rtp_vote', array( $this, 'process_vote' ) );
 		add_action( 'wp_ajax_nopriv_rtp_vote', array( $this, 'process_vote' ) );
@@ -30,6 +33,7 @@ class RTP_RateThisPost {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 
+	// When activated
 	public function activate() {
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 		global $wpdb;
@@ -49,10 +53,12 @@ class RTP_RateThisPost {
 		dbDelta( $sql );
 	}
 
+	// when deactivated
 	public function deactivate() {
 		// Plugin deactivation logic
 	}
 
+	// Load assets
 	public function enqueue_scripts() {
 	    wp_enqueue_script( 'rtp-vote-script', plugins_url( '/assets/js/vote-script.js', RTP_PLUGIN_FILE ), array( 'jquery' ), null, true );
 	    wp_localize_script( 'rtp-vote-script', 'rtp_ajax_obj', array( 
@@ -62,6 +68,7 @@ class RTP_RateThisPost {
 	    wp_enqueue_style( 'vote-style', plugins_url( '/assets/css/vote-style.css', RTP_PLUGIN_FILE ) );
 	}
 
+	// Process user vote
 	public function process_vote() {
 		global $wpdb;
 		$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
@@ -117,10 +124,12 @@ class RTP_RateThisPost {
 		}
 	}
 
+	// Add the meta boxes on the edit post screen
 	public function add_meta_boxes() {
 		add_meta_box( 'rtp_vote_results', __( 'Vote Results', 'vote-this-post' ), array( $this, 'vote_results_meta_box' ), 'post', 'side' );
 	}
 
+	// Display results in the metabox
 	public function vote_results_meta_box( $post ) {
 	    global $wpdb;
 	    $table_name = $wpdb->prefix . 'rtp_votes';
@@ -154,6 +163,7 @@ class RTP_RateThisPost {
 	    echo '</div>';
 	}
 
+	// Display the buttons after each post
 	public function display_voting_buttons( $content ) {
 	    if ( is_single() && in_the_loop() && is_main_query() ) {
 	        global $post;
@@ -232,6 +242,7 @@ class RTP_RateThisPost {
 	    return $content;
 	}
 
+	// Helper function to securely get user IP address
 	private function get_user_ip() {
         $ip_keys = [
             'HTTP_CLIENT_IP',
